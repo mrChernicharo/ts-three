@@ -11,9 +11,6 @@ import {
 } from "three";
 
 export class AppGround extends Mesh {
-  geometry: PlaneGeometry;
-  material: Material;
-  mesh: Mesh;
   width: number;
   height: number;
   constructor(width: number, height: number) {
@@ -24,7 +21,8 @@ export class AppGround extends Mesh {
     this.geometry = new PlaneGeometry(width, height);
     this.material = new MeshBasicMaterial({ color: "#242424", wireframe: false });
 
-    this.mesh = new Mesh(this.geometry, this.material);
+    new Mesh(this.geometry, this.material);
+
     // this.rotation.x += MathUtils.degToRad(-90);
     this.rotation.x -= Math.PI / 2;
   }

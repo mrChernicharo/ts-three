@@ -3,7 +3,7 @@ import { AppRenderer } from "./AppRenderer";
 import { AppCamera } from "./AppCamera";
 import { AppCube } from "./AppCube";
 import { AppPole } from "./AppPole";
-import { DirectionalLight } from "three";
+import { DirectionalLight, Light } from "three";
 import { Resizer } from "./Resizer";
 import { Loop } from "./Loop";
 import { AppGround } from "./AppGround";
@@ -14,8 +14,8 @@ export class Game {
   renderer: AppRenderer;
   camera: AppCamera;
   controls: AppOrbitControls;
-  loop;
-  lights;
+  loop: Loop;
+  lights: Light;
   constructor(domContainer: HTMLDivElement) {
     this.camera = new AppCamera().init();
     this.renderer = new AppRenderer().init();

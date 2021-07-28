@@ -1,7 +1,6 @@
 import { Camera, PerspectiveCamera } from "three";
 
 export class AppCamera extends PerspectiveCamera {
-  camera;
   constructor() {
     super();
 
