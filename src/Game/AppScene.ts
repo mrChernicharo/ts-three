@@ -1,8 +1,9 @@
 import { Scene, Color } from "three";
 
-class AppScene {
+class AppScene extends Scene {
   scene;
   constructor() {
+    super();
     this.scene = new Scene();
     this.scene.background = new Color("black");
   }

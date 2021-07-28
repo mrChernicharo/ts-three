@@ -1,5 +1,8 @@
+import { AppCamera } from "./AppCamera";
+import { AppRenderer } from "./AppRenderer";
+
 export class Resizer {
-  constructor(container: Element, camera: any, renderer: any) {
+  constructor(container: Element, camera: AppCamera, renderer: AppRenderer) {
     this.setSize(container, camera, renderer);
 
     window.addEventListener("resize", () => {
@@ -13,7 +16,7 @@ export class Resizer {
     console.log("resizing");
   }
 
-  setSize(container: any, camera: any, renderer: any) {
+  setSize(container: Element, camera: AppCamera, renderer: AppRenderer) {
     camera.aspect = container.clientWidth / container.clientHeight;
 
     // update the camera's frustum

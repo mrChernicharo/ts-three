@@ -1,22 +1,23 @@
 import { Camera, PerspectiveCamera } from "three";
 
-export class AppCamera extends Camera {
+export class AppCamera extends PerspectiveCamera {
   camera;
   constructor() {
     super();
-    this.camera = new PerspectiveCamera(
-      35, // fov = Field Of View
+
+    new PerspectiveCamera(
+      50, // fov = Field Of View
       1, // aspect ratio (dummy value)
-      0.1, // near clipping plane
-      1000 // far clipping plane
+      0.5, // near clipping plane
+      3000 // far clipping plane
     );
 
-    this.camera.position.set(0, 40, 100);
+    this.position.set(0, 60, -200);
 
-    this.camera.rotateX(Math.PI * 1.85);
+    this.lookAt(0, 0, 0);
   }
 
   init() {
-    return this.camera;
+    return this;
   }
 }
