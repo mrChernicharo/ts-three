@@ -8,7 +8,7 @@ export class AppCamera extends Camera {
       35, // fov = Field Of View
       1, // aspect ratio (dummy value)
       0.1, // near clipping plane
-      100 // far clipping plane
+      1000 // far clipping plane
     );
 
     this.camera.position.set(0, 40, 100);
@@ -16,7 +16,7 @@ export class AppCamera extends Camera {
     this.camera.rotateX(Math.PI * 1.85);
   }
 
-  get() {
+  init() {
     return this.camera;
   }
 }

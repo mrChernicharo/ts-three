@@ -7,7 +7,7 @@ class AppScene {
     this.scene.background = new Color("black");
   }
 
-  get() {
+  init() {
     return this.scene;
   }
 }

@@ -2,7 +2,7 @@ import { AppScene } from "./AppScene";
 import { AppRenderer } from "./AppRenderer";
 import { AppCamera } from "./AppCamera";
 import { AppCube } from "./AppCube";
-import { DirectionalLight, Vector3 } from "three";
+import { DirectionalLight } from "three";
 import { Resizer } from "./Resizer";
 import { Loop } from "./Loop";
 
@@ -11,25 +11,27 @@ export class Game {
   renderer;
   camera;
   loop;
+  lights;
   constructor(domContainer: HTMLDivElement) {
-    console.log("game contructor!", domContainer);
-    this.camera = new AppCamera().get();
-    this.renderer = new AppRenderer().get();
-    this.scene = new AppScene().get();
+    this.camera = new AppCamera().init();
+    this.renderer = new AppRenderer().init();
+    this.scene = new AppScene().init();
+
     this.loop = new Loop(this.camera, this.scene, this.renderer);
 
-    const light = new DirectionalLight("white", 8);
-    const position = new Vector3(10, 10, 40);
+    this.lights = new DirectionalLight("white", 1.8);
 
-    const cube = new AppCube(position).get();
+    const cube = new AppCube(-10, 10, 20);
+    const cube2 = new AppCube(3, 10, 50);
 
-    // move the light right, up, and towards us
-    light.position.set(10, 10, 10);
+    this.loop.add(cube);
+    this.loop.add(cube2);
 
-    this.scene.add(light);
-    this.scene.add(cube);
+    // move the this.lights right, up, and towards us
+    // this.lights.position.set(10, 10, -10);
 
-    // this.loop.updatables.push(cube);
+    this.scene.add(this.lights);
+
     domContainer.append(this.renderer.domElement);
     new Resizer(domContainer, this.camera, this.renderer);
   }

@@ -6,7 +6,7 @@ export class AppRenderer {
     this.renderer = new WebGL1Renderer({ antialias: true });
     this.renderer.physicallyCorrectLights = true;
   }
-  get() {
+  init() {
     return this.renderer;
   }
 
