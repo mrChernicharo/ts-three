@@ -4,17 +4,19 @@ import { AppCamera } from "./AppCamera";
 import { AppCube } from "./AppCube";
 import { DirectionalLight, Vector3 } from "three";
 import { Resizer } from "./Resizer";
+import { Loop } from "./Loop";
 
 export class Game {
   scene;
   renderer;
   camera;
+  loop;
   constructor(domContainer: HTMLDivElement) {
     console.log("game contructor!", domContainer);
     this.camera = new AppCamera().get();
     this.renderer = new AppRenderer().get();
     this.scene = new AppScene().get();
-    // this.loop = new Loop();
+    this.loop = new Loop(this.camera, this.scene, this.renderer);
 
     const light = new DirectionalLight("white", 8);
     const position = new Vector3(10, 10, 40);
@@ -27,16 +29,15 @@ export class Game {
     this.scene.add(light);
     this.scene.add(cube);
 
+    // this.loop.updatables.push(cube);
     domContainer.append(this.renderer.domElement);
     new Resizer(domContainer, this.camera, this.renderer);
   }
 
   start() {
-    // this.loop.start()
-
     console.log("game start!");
-    this.renderer.render(this.scene, this.camera);
-    console.log(this.scene);
+    // this.renderer.render(this.scene, this.camera);
+    this.loop.start();
   }
 
   stop() {
