@@ -1,10 +1,10 @@
-import { BoxBufferGeometry, MathUtils, Mesh, MeshBasicMaterial, Vector3 } from "three";
+import { BoxBufferGeometry, MathUtils, Mesh, MeshToonMaterial } from "three";
 
 export class AppCube extends Mesh {
   constructor(x: number, y: number, z: number) {
     super();
 
-    this.material = new MeshBasicMaterial({ color: "orangered" });
+    this.material = new MeshToonMaterial({ color: "orange", clipShadows: true });
     this.geometry = new BoxBufferGeometry(4, 4, 4);
 
     new Mesh(this.geometry, this.material);

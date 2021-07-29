@@ -1,6 +1,11 @@
-import { Clock, Quaternion } from "three";
+import { Clock, Mesh, Quaternion } from "three";
 import { AppCamera } from "./AppCamera";
 import { AppCube } from "./AppCube";
+import { Enemy } from "./Enemy";
+
+interface IUpdatable extends Mesh {
+  tick: (delta: number) => void;
+}
 
 const clock = new Clock();
 
@@ -8,7 +13,7 @@ class Loop {
   camera: AppCamera;
   scene;
   renderer;
-  updatables: AppCube[];
+  updatables: IUpdatable[];
   constructor(camera: any, scene: any, renderer: any) {
     this.camera = camera;
     this.scene = scene;
